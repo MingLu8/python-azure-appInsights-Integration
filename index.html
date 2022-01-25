@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        axios.defaults.withCredentials = true
+        function send1() {
+            var url = document.getElementById('url').value;
+            send(url);
+        }
+        function send2() {
+            var authUrl = document.getElementById('authUrl').value;
+            var meUrl = document.getElementById('meUrl').value;
+            send(authUrl, meUrl);
+        }
+        function send(authUrl, meUrl) {
+            //var url = 'https://localhost:44361';
+            const json = JSON.stringify({
+                "username": "dlehman",
+                "password": "password1"
+            });
+            const header = {
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type":"application/json"
+                }
+            }
+            axios.post(authUrl + "/auth", json, header)
+                .then(function (response) {
+                    // handle success
+                    console.log(response);
+                    axios.get(meUrl + "/users/me", header)
+					axios.post(meUrl + "/users/me", {}, header);
+					axios.put(meUrl + "/users/me", {}, header);
+					axios.delete(meUrl + "/users/me", header);
+					axios.patch(meUrl + "/users/me",{}, header);
+                });
+              
+        }
+    </script>
+</head>
+<body>
+    <!-- <div>
+        <input type="text" id="url" style="width:500px" value="https://asi-api-proxy.azurewebsites.net/api/proxy" />
+        <button onclick="send1()">send</button>
+    </div> -->
+    <div>
+        <input type="text" id="authUrl" style="width:500px" value="/api" />
+        <input type="text" id="meUrl" style="width:500px" value="https://asi-babou.azurewebsites.net" />
+        <button onclick="send2()">send</button>
+    </div>
+</body>
+</html>
