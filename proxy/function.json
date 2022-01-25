@@ -3,6 +3,7 @@
   "bindings": [
     {
       "authLevel": "anonymous",
+      "route": "proxy/{service}/{**catchAll}",
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
