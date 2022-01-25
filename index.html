@@ -27,7 +27,7 @@
                     "Content-Type":"application/json"
                 }
             }
-            axios.post(authUrl + "/auth", json, header)
+            axios.post(authUrl, json, header)
                 .then(function (response) {
                     // handle success
                     console.log(response);
