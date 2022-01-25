@@ -16,7 +16,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             name = req_body.get('name')
 
     if name:
-        return func.HttpResponse(f"Hello, {name}. This HTTP triggered function executed successfully.", headers={'content-type':'text/html', 'Set-Cookie':'cross-site-cookie=bar; SameSite=None; Secure; HttpOnly', 'Access-Control-Allow-Origin':'https://yellow-moss-018637f10.1.azurestaticapps.net', 'Access-Control-Allow-Credentials':'true'}, status_code=200)
+        return func.HttpResponse(f"Hello, {name}. This HTTP triggered function executed successfully.", headers={'content-type':'application/json', 'Set-Cookie':'cross-site-cookie=bar; SameSite=None; Secure; HttpOnly', 'Access-Control-Allow-Origin':'https://ambitious-plant-090f10f1e.1.azurestaticapps.net', 'Access-Control-Allow-Credentials':'true'}, status_code=200)
     else:
         return func.HttpResponse(
              "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.",
